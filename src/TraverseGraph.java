@@ -12,14 +12,18 @@ import org.camunda.bpm.model.bpmn.instance.*;
 import org.json.*;
 
 import java.util.LinkedList;
-import java.util.logging.Handler;
 
-public class Search {
+public class TraverseGraph {
 
-    static String START = "approveInvoice";
-    static String END = "invoiceProcessed";
+    //Input Arguments
+    static String startFlowNodeID;
+    static String endFlowNodeID;
 
     public static void main(String[] args) throws IOException {
+        System.out.println();
+        //Command Line arguments
+        startFlowNodeID = args[0].toString();
+        endFlowNodeID = args[1].toString();
 
         //Get request to fetch the XML representation of the BPMN file
         URL url = new URL("https://n35ro2ic4d.execute-api.eu-central-1.amazonaws.com/prod/engine-rest/process-definition/key/invoice/xml");
@@ -36,12 +40,13 @@ public class Search {
             while (sc.hasNext()) {
                 response = response + sc.nextLine();
             }
-            JSONObject obj = new JSONObject(response);
-            String parseXML = obj.get("bpmn20Xml").toString();
+            JSONObject obj = new JSONObject(response); //New JSON Object from API response
+            String parseXML = obj.get("bpmn20Xml").toString(); //Parse XML by using Camunda Model API
             InputStream inputStream = new ByteArrayInputStream(parseXML.getBytes(Charset.forName("UTF-8")));
-            BpmnModelInstance modelInstance = Bpmn.readModelFromStream(inputStream);
 
-            // find element instance by ID & store in variable type String for creating Grapg
+            BpmnModelInstance modelInstance = Bpmn.readModelFromStream(inputStream); //For reading data from the Model API
+
+            // find element instance by ID & store in variable type String for creating Graph Data Structure
             StartEvent start = (StartEvent) modelInstance.getModelElementById("StartEvent_1");
             String startEvent_1ID = start.getId();
             BusinessRuleTask assign = (BusinessRuleTask) modelInstance.getModelElementById("assignApprover");
@@ -63,59 +68,65 @@ public class Search {
             EndEvent endInvoiceProcessed = (EndEvent) modelInstance.getModelElementById("invoiceProcessed");
             String invoiceProcessedID = endInvoiceProcessed.getId();
 
-            Graph graph = new Graph();
-            graph.addEdge(startEvent_1ID, assignApproverID);
-            graph.addEdge(assignApproverID, approveInvoiceID);
-            graph.addEdge(approveInvoiceID, invoiceApprovedID);
-            graph.addEdge(invoiceApprovedID, reviewInvoiceID);
-            graph.addEdge(invoiceApprovedID, prepareBankTransferID);
-            graph.addEdge(prepareBankTransferID, ServiceTask_1ID);
-            graph.addEdge(ServiceTask_1ID, invoiceProcessedID);
-            graph.addEdge(reviewInvoiceID, reviewSuccessful_gwID);
-            graph.addEdge(reviewSuccessful_gwID, approveInvoiceID);
-            graph.addEdge(reviewSuccessful_gwID, invoiceNotProcessedID);
+            //Create Graph Data Structure (Vertices & Edges) and pass arguments as String
+            GraphDataStructure graphDataStructure = new GraphDataStructure();
+            graphDataStructure.addEdge(startEvent_1ID, assignApproverID);
+            graphDataStructure.addEdge(assignApproverID, approveInvoiceID);
+            graphDataStructure.addEdge(approveInvoiceID, invoiceApprovedID);
+            graphDataStructure.addEdge(invoiceApprovedID, reviewInvoiceID);
+            graphDataStructure.addEdge(invoiceApprovedID, prepareBankTransferID);
+            graphDataStructure.addEdge(prepareBankTransferID, ServiceTask_1ID);
+            graphDataStructure.addEdge(ServiceTask_1ID, invoiceProcessedID);
+            graphDataStructure.addEdge(reviewInvoiceID, reviewSuccessful_gwID);
+            graphDataStructure.addEdge(reviewSuccessful_gwID, approveInvoiceID);
+            graphDataStructure.addEdge(reviewSuccessful_gwID, invoiceNotProcessedID);
             sc.close();
 
-
+            //Generate a collection of nodes
             LinkedList<String> visited = new LinkedList();
-
-            visited.add(START);
-            new Search().depthFirst(graph, visited);
+            visited.add(startFlowNodeID);
+            new TraverseGraph().depthFirst(graphDataStructure, visited);
         }
-
     }
 
-    private void depthFirst(Graph graph, LinkedList<String> visited) {
-        LinkedList<String> nodes = graph.adjacentNodes(visited.getLast());
-        // examine adjacent nodes
+    //Algorithm for Depth-first-search (DFS) for traversing/searching the given exemplary invoice approval diagram
+
+    private void depthFirst(GraphDataStructure graphDataStructure, LinkedList<String> visited) {
+
+        LinkedList<String> nodes = graphDataStructure.adjacentNodes(visited.getLast());
+        // inspect adjacent nodes
         for (String node : nodes) {
             if (visited.contains(node)) {
                 continue;
             }
-            if (node.equals(END)) {
+
+            if (node.equals(endFlowNodeID)) {
                 visited.add(node);
                 printPath(visited);
                 visited.removeLast();
                 break;
+
             }
+
         }
         for (String node : nodes) {
-            if (visited.contains(node) || node.equals(END)) {
+            if (visited.contains(node) || node.equals(endFlowNodeID)) {
                 continue;
             }
+
             visited.addLast(node);
-            depthFirst(graph, visited);
+            depthFirst(graphDataStructure, visited);
             visited.removeLast();
         }
     }
 
+
+    //Print path along with Input Nodes
     private void printPath(LinkedList<String> visited) {
 
-        System.out.print("The path from " + START + " to " + END + " is: ");
+        System.out.print("The path from " + startFlowNodeID + " to " + endFlowNodeID + " is: ");
         System.out.print(visited);
         System.out.println();
-
-
     }
 }
 
