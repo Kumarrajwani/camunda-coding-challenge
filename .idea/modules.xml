@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/caminda-coding-challenge.iml" filepath="$PROJECT_DIR$/caminda-coding-challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/traverse-graph.iml" filepath="$PROJECT_DIR$/traverse-graph.iml" />
     </modules>
   </component>
 </project>

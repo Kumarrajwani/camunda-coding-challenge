@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="traverse-graph:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/traverse_graph_jar</output-path>
+    <root id="archive" name="traverse-graph.jar">
+      <element id="module-output" name="traverse-graph" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/json-20200518.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-engine-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-bpmn-model-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-xml-model-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-cmmn-model-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-engine-dmn-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-commons-utils-1.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-dmn-model-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-engine-feel-api-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-engine-feel-juel-7.9.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-commons-logging-1.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/slf4j-api-1.7.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/camunda-commons-typed-values-1.5.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-email-1.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javax.mail-1.5.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/activation-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/mybatis-3.4.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/spring-beans-3.1.2.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/spring-core-3.1.2.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/spring-asm-3.1.2.RELEASE.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-logging-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/joda-time-2.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
