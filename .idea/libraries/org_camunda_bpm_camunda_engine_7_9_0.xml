@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="org.camunda.bpm:camunda-engine:7.9.0" type="repository">
+    <properties maven-id="org.camunda.bpm:camunda-engine:7.9.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/camunda-engine-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-bpmn-model-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-xml-model-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-cmmn-model-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-engine-dmn-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-commons-utils-1.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-dmn-model-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-engine-feel-api-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-engine-feel-juel-7.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-commons-logging-1.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/camunda-commons-typed-values-1.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-email-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.mail-1.5.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mybatis-3.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-beans-3.1.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-core-3.1.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-asm-3.1.2.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/joda-time-2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

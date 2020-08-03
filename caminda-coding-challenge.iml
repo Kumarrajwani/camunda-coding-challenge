@@ -7,5 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="org.camunda.bpm:camunda-engine:7.9.0" level="project" />
+    <orderEntry type="library" exported="" name="org.json:json:20200518" level="project" />
   </component>
 </module>
